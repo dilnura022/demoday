@@ -76,7 +76,8 @@ function Basket() {
     removeItem,
   } = useCart();
 
-  if (isEmpty) return <p>Your cart is empty</p>;
+
+  if (isEmpty) return <p className='p'>Your cart is empty</p>;
 
   return (
     <div className='container'>

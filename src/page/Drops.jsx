@@ -74,7 +74,7 @@ function Drops() {
 
     const { addItem } = useCart();
 
-    const [change, setChange] = useState(false)
+    const [change, setChange] = useState(null)
 
     return (
         <div className='container '>
@@ -93,23 +93,26 @@ function Drops() {
 
                         <b className="lorem">Lorem ipsum. <b>0.005 ETH</b></b>
                         <b className="lorem">Lorem ipsum. <b>{item.price}</b></b>
-                       
+
                         <div className='buttons'>
 
-                            <VscHeart className='heart'  />
+                            <VscHeart className='heart' />
 
-                            <div key={item.id} >
-                                <button className='btn' onClick={() => addItem(item)}>buy now</button>
-                            </div>
-
-
+                            <div key={item.id} className={`dress${change === item.id ? "change" : ""}`}>
+                                <button className='btn'
+                                    onClick={() => {
+                                        addItem(item)
+                                        setChange(item.id)
+                                    }}> {change === item.id ? "bought" : "buy now"}</button>
                         </div>
+
+                    </div>
                     </div>
 
                 ))}
-            </div>
-
         </div>
+
+        </div >
     )
 }
 
